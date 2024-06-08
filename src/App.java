@@ -15,5 +15,6 @@ public class App {
         SnakeGame snakeGame = new SnakeGame(windowWidth, windowHeight);
         window.add(snakeGame);
         window.pack();
+        snakeGame.requestFocus();
     }
 }
