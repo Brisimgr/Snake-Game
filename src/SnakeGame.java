@@ -74,6 +74,16 @@ public class SnakeGame extends JPanel implements ActionListener, KeyListener{
             Tile snakePart = snakeBody.get(i);
             g.fillRect(snakePart.x * tileSize, snakePart.y * tileSize, tileSize, tileSize);
         }
+
+        g.setFont(new Font("Arial", Font.PLAIN, 16));
+        if(gameOver) {
+            g.setColor(Color.red);
+            g.drawString("Game Over: " + String.valueOf(snakeBody.size()), tileSize - 16, tileSize);
+        }
+        else {
+            g.setColor(Color.green);
+            g.drawString("Score: " + String.valueOf(snakeBody.size()), tileSize - 16, tileSize);
+        }
     }
 
     public void placeFood() {
@@ -114,7 +124,7 @@ public class SnakeGame extends JPanel implements ActionListener, KeyListener{
             }
         }
 
-        if (snakeHead.x * tileSize < 0 || snakeHead.x * tileSize > boardWidth || snakeHead.y < 0 || snakeHead.y > boardHeight) {
+        if (snakeHead.x * tileSize < 0 || snakeHead.x * tileSize > boardWidth || snakeHead.y * tileSize < 0 || snakeHead.y * tileSize > boardHeight) {
             gameOver = true;
         }
     }
